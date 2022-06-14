@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <meta http-equiv='refresh' content='5'/>
+    <meta name="viewport" content="width=device-width" />
+    <title>HSD</title>
+    <style>
+      body { background-color: #cccccc; font-family: Arial, Helvetica, Sans-Serif; Color: #000088; }
+    </style>
+  </head>
+  <body>
+    <h1>Hen Some Door!</h1>
+    <p>Time: %02d:%02d</p>
+    <p>Uptime: %02d:%02d:%02d</p>
+    <p>Scale: %d</p>
+    <p>Door: %s</p>
+    %s
+    <tr>
+      <td><form method="post" action="/open"><input type="submit" value="Open"></form></td>
+      <td><form method="post" action="/close"><input type="submit" value="Close"></form></td>
+    </tr>
+    <form name="schedule" method="post" action="/schedule">
+    <table><tbody>
+      <tr><td>Open at </td><td><input type="text" size="2" name="door_h_open" value="%02d">h</td><td><input type="text" size="2" name="door_m_open" value="%02d">m</td></tr>
+      <tr><td>Close at </td><td><input type="text" size="2" name="door_h_close" value="%02d">h</td><td><input type="text" size="2" name="door_m_close" value="%02d">m</td></tr>
+    </tboody></table>
+    <input type="submit" value="Schedule!">
+    </form>
+    <br>
+    <a href="/config">Config</a>
+  </body>
+  </html>

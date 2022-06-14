@@ -1,0 +1,21 @@
+{
+	"folders": [
+		{
+			"name": "hensomedoor-0.1",
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"streambuf": "cpp",
+			"*.tcc": "cpp",
+			"cmath": "cpp",
+			"random": "cpp",
+			"array": "cpp",
+			"functional": "cpp",
+			"tuple": "cpp",
+			"type_traits": "cpp",
+			"utility": "cpp"
+		}
+	}
+}

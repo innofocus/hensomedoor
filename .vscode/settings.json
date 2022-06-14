@@ -1,0 +1,13 @@
+{
+    "terminal.integrated.env.linux": {
+        "PATH": "/home/nico/.platformio/penv/bin:/home/nico/.platformio/penv:/home/nico/bin:/home/nico/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin",
+        "PLATFORMIO_CALLER": "vscode"
+    },
+    "files.associations": {
+        "array": "cpp",
+        "functional": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp",
+        "utility": "cpp"
+    }
+}

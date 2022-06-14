@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width" />
+    <title>HSD</title>
+    <style>
+      body { background-color: #cccccc; font-family: Arial, Helvetica, Sans-Serif; Color: #000088; }
+    </style>
+  </head>
+  <body>
+     <h1>Hen Some Door!</h1>
+    <p>Uptime: %02d:%02d:%02d</p>
+    %s
+    <form name="config" method="post" action="/config">
+    <table><tbody>
+      <tr><td>w_stdd_threshold </td><td><input type="text" name="w_stdd_threshold" value="%.2f"></td></tr>
+      <tr><td>servo_neutral </td><td><input type="text" name="servo_neutral" value="%d"></td></tr>
+      <tr><td>w_delta_open </td><td><input type="text" name="w_delta_open" value="%d"></td></tr>
+      <tr><td>w_delta_close </td><td><input type="text" name="w_delta_close" value="%d"></td></tr>
+      <tr><td>w_precision </td><td><input type="text" name="w_precision" value="%d"></td></tr>
+      <tr><td>scale </td><td><input type="text" name="scale" value="%.2f"></td></tr>
+      <tr><td>servo_rotation </td><td><input type="text" name="servo_rotation" value="%d"></td></tr>
+      <tr><td>w_door </td><td><input type="text" name="w_door" value="%.0f"></td></tr>
+      <tr><td>mqttserver </td><td><input type="text" name="mqttserver" value="%s"></td></tr>
+    </tbody></table>
+    <tr><td><input type="submit" value="update">
+    </form>
+    <br>
+    <table><tbody>
+    <tr><td>
+    <form name="restore" method="post" action="/restore"><input type="submit" value="restore"></form>
+    </td><td>
+    <form name="tare" method="post" action="/tare"><input type="submit" value="tare"></form>
+    </td><td>
+    <form name="reset" method="post" action="/reset"><input type="submit" value="reset"></form>
+    </td></tr>
+    <tr><td><form method="post" action="/up"><input type="submit" value="UP"></form>
+    </td><td>
+    <form method="post" action="/down"><input type="submit" value="DOWN"></form>
+    </td></tr>
+    <tr><td>
+    <a href="/">Main Page</a>
+    </td></tr></tbody></table>
+  </body>
+  </html>
