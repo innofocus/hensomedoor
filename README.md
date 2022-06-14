@@ -50,5 +50,10 @@ List of materials:
 - 4 strain gauge resistors
 - cyanoacrylate to glue strain gauge resistors on load cell 3D printed frame.
 - tiny wires for strain gauge soldering (ones from wired ear plug are perfect).
-See 3D STL files to print the complete box.
+See 3D STL files to print the complete box.  
+
+This is my chicken house's door at work :  
+![opening](https://github.com/innofocus/hensomedoor/blob/master/Videos/opening.gif?raw=true)
+![closing](https://github.com/innofocus/hensomedoor/blob/master/Videos/closing.gif?raw=true)
+
 
