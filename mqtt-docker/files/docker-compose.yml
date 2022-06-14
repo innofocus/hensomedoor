@@ -1,0 +1,74 @@
+version: "2"
+services:
+  influxdb:
+    container_name: influxdb
+    image: influxdb
+    ports:
+      - "127.0.0.1:8086:8086"
+      - "127.0.0.1:8082:8082"
+      # UDP Port
+      - "127.0.0.1:8089:8089/udp"
+    volumes:
+      - {{ dest_dir }}/data/influxdb:/var/lib/influxdb
+      - {{ dest_dir }}/conf/influxdb:/etc/influxdb/
+    restart: always
+
+  chronograf:
+    image: chronograf
+    volumes:
+      - {{ dest_dir }}/data/chronograf:/var/lib/chronograf
+    environment:
+       INFLUXDB_URL: http://influxdb:8086
+    ports:
+      - "127.0.0.1:8888:8888"
+    links:
+      - influxdb
+    
+  grafana:
+    container_name: grafana
+    image: grafana/grafana
+    user: "0"
+    ports:
+      - "45362:3000"
+    volumes:
+      - {{ dest_dir }}/data/grafana:/var/lib/grafana
+      - {{ dest_dir }}/log/grafana:/var/log/grafana
+      - {{ dest_dir }}/conf/grafana/provisioning/:/etc/grafana/provisioning
+      - {{ dest_dir }}/conf/grafana/dashboards/:/etc/grafana/dashboards
+    depends_on:
+      - influxdb
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=secretpassword
+      - GF_SMTP_ENABLED=true
+      - GF_SMTP_HOST=smtp.gmail.com:587
+      - GF_SMTP_USER=user@gmail.com
+      - GF_SMTP_PASSWORD=secretpassword
+      - GF_SMTP_SKIP_VERIFY=true
+      - GF_SMTP_FROM_ADDRESS=user@gmail.com
+      - GF_SMTP_FROM_NAME=Grafana
+    links:
+      - influxdb
+    restart: always
+
+  mqtt:
+    container_name: mqtt
+    image: eclipse-mosquitto:latest
+    user: "0"
+    ports:
+      - "1883:1883"
+      - "127.0.0.1:9001:9001"
+    volumes:
+      - {{ dest_dir }}/conf/mqtt/:/mosquitto/config/
+      - {{ dest_dir }}/data/mqtt/:/mosquitto/data/
+      - {{ dest_dir }}/log/mqtt/:/mosquitto/log/
+    restart: always
+
+  telegraf:
+    container_name: telegraf
+    image: telegraf
+    network_mode: "host"
+    volumes:
+      - {{ dest_dir }}/conf/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always

@@ -1,0 +1,39 @@
+---
+
+- name: install miget
+  hosts: miget
+  become: true
+  roles:
+    - ../ansible/roles/docker
+  tasks:
+    - name: dir dest create
+      file:
+        dest: "{{ dest_dir }}/{{ item }}"
+        state: directory
+        mode: "0777"
+      with_items:
+        - ""
+        - "conf"
+        - "data"
+        - "log"
+        - "data/grafana"
+        - "data/chronograf"
+        - "data/influxdb"
+        - "data/mqtt"
+        - "log/grafana"
+        - "log/influxdb"
+        - "log/mqtt"
+
+    - name: copy config
+      copy:
+        dest: "{{ dest_dir }}"
+        src: files/conf
+
+    - name: project compose template
+      template:
+        src: files/docker-compose.yml
+        dest: "{{ dest_dir }}/docker-compose.yml"
+
+    - name: deploy docker compose
+      docker_compose:
+        project_src: "{{ dest_dir }}"
