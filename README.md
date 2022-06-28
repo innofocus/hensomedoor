@@ -57,4 +57,8 @@ This is my chicken house's door at work :
 ![opening](https://github.com/innofocus/hensomedoor/blob/master/Videos/opening.gif?raw=true)
 ![closing](https://github.com/innofocus/hensomedoor/blob/master/Videos/closing.gif?raw=true)
 
+## Todos and ongoings
+- add electronic schema
+- write clean object code
+
 
