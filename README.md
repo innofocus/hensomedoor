@@ -1,4 +1,5 @@
 # hensomedoor
+An handsome door for any hen house.
 ## Object
 This is an automated servo mecanism based on internal weight sensor. The prototype served as an chicken house door.
 
